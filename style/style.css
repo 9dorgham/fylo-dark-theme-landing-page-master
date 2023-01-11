@@ -224,30 +224,26 @@ footer {
     background-color: var(--bg-foo);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    align-content: flex-end;
     gap: 2em;
     padding: var(--pad);
-    padding-top: 20em;
+    padding-top: 10em;
     text-transform: capitalize;
+}
+footer .logo {
+    flex-basis: 100%;
+}
+footer > ul {
+    flex-grow: 1;
 }
 footer a {
     color: #fff;
 }
-footer ul:first-of-type {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 2em;
-}
-footer ul:first-of-type address {
+footer address {
     max-inline-size: 40ch;
     line-height: 1.5;
-    display: block;
-    margin-bottom: 1em;
 }
-footer ul:first-of-type li:nth-child(1) {
-    flex: 1 100%;
-}
+/* put an icon with pseudo-elements */
 .info {
     position: relative;
     padding-left: 2em;
@@ -267,15 +263,13 @@ footer ul:first-of-type li:nth-child(1) {
 .info.email::before {
     background: url(../assets/images/icons/icon-email.svg) no-repeat;
 }
-footer ul:first-of-type li:nth-child(2),
-footer ul:first-of-type li:nth-child(3) {
-    width: calc(50% - 2em);
-}
-footer ul:not(ul:first-of-type) li {
+/* finish  */
+footer ul li {
     margin-bottom: 1em;
 }
 footer .social {
     display: flex;
+    justify-content: center;
     gap: 1em;
 }
 footer .icon {
@@ -289,32 +283,36 @@ footer .icon {
 
 
 
+
+
+/* media-query */
 @media (max-width: 998px) {
     #product {
         flex-direction: column;   
     }
-    footer ul:first-child {
-        flex-basis: 100%;
-    }
+
+    footer > address,
+    footer ul:nth-child(1),
     footer ul:nth-child(2),
     footer ul:nth-child(3) {
         flex-basis: calc(50% - 2em);
+    }
+    footer .social {
+        flex-basis: 100%;
     }
 }
 @media (max-width: 786px) {
     :root {
         --pad: 2em 1em;
     }
-    #early-ac div,
-    footer,
-    footer ul:first-of-type {
+    #early-ac div {
         flex-direction: column;
     }
-    footer ul li {
+    footer > * {
+        flex-basis: 100% !important;
+    }
+    /* footer ul li {
         width: 100% !important;
     }
-    footer ul:last-of-type {
-        align-self: center;
-    }
-    
+     */
 }
